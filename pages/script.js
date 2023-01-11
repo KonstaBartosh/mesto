@@ -7,13 +7,13 @@ let closePopupButton = document.querySelector('.popup__close-button');
 
 
 function openPopup () {
-    popup.classList.remove('popup');
+    popup.classList.add('popup_opened');
 }
 editProfileButton.addEventListener('click', openPopup);
 
 
 function closePopup () {
-    popup.classList.add('popup');
+    popup.classList.remove('popup_opened');
 }
 closePopupButton.addEventListener('click', closePopup);
 
