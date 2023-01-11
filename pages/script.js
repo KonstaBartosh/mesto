@@ -16,4 +16,5 @@ function closePopup () {
     popup.classList.remove('popup_opened');
 }
 closePopupButton.addEventListener('click', closePopup);
+// ---------------------------------------------------------------------------
 
