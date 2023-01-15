@@ -19,3 +19,11 @@ function closePopup () {
 closePopupButton.addEventListener('click', closePopup);
 
 // ---------------------------------------------------------------------------
+// Клик по лайку
+// ---------------------------------------------------------------------------
+let likeButton = document.querySelector('.card__like');
+
+function clickOnLike () {
+    likeButton.classList.add('card__like_active');
+}
+likeButton.addEventListener('click', clickOnLike);
