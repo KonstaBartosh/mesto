@@ -27,7 +27,7 @@ let profileJob =document.querySelector('.profile__info-subtitle');
 let formElement = document.querySelector('.popup__container')  // находим форму в DOM
 
 let nameInput = formElement.querySelector('.popup__name-input'); //поля формы в DOM
-let jobInput = formElement.querySelector('.popup__job-input'); //поля формы в DOM
+let jobInput = formElement.querySelector('.popup__job-input'); 
 
 nameInput.value = profileName.textContent; //поля формы со значением в профиле
 jobInput.value = profileJob.textContent;
