@@ -1,6 +1,5 @@
 .profile__info {
     padding-left: 30px;
-    width: 336px;
     color: white;
     display: grid;
     grid-template-columns: repeat(2, max-content);
@@ -13,6 +12,5 @@
     .profile__info {
         justify-content: center;
         padding: 0;
-        width: 320px;
     }
 }
