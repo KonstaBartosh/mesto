@@ -19,16 +19,6 @@ closePopupButton.addEventListener('click', closePopup);
 
 
 // ---------------------------------------------------------------------------
-// Клик по лайку. В процессе разработки.
-// ---------------------------------------------------------------------------
-// let likeButton = document.querySelector('.card__like');
-
-// function clickOnLike () {
-//     likeButton.classList.add('card__like_active');
-// }
-// likeButton.addEventListener('click', clickOnLike);
-
-// ---------------------------------------------------------------------------
 // Изменение профиля через попап
 // ---------------------------------------------------------------------------
 let profileName = document.querySelector('.profile__info-title');
