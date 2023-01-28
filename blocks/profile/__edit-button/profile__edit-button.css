@@ -8,6 +8,9 @@
     margin-left: 25px;
     display: flex;
     align-self: center;
+    border: 0;
+    background-color: currentColor;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 540px) {

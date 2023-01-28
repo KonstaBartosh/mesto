@@ -5,6 +5,9 @@
     position: absolute;
     top: -42px;
     right: -44px;
+    border: 0;
+    cursor: pointer;
+    background-color: currentColor;
 }
 
 @media screen and (max-width: 540px) {
