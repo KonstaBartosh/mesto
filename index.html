@@ -24,7 +24,7 @@
             <button class="profile__button" aria-label="Добавить" type="button"></button>
         </section>
         <section class="cards">
-            <div class="card">
+            <!-- <div class="card">
                 <img src="./images/karachaevsk.jpeg" alt="Карачаевск" class="card__image">
                 <div class="card__header">
                     <h2 class="card__title">Карачаево-Черкесия</h2>
@@ -65,15 +65,15 @@
                     <h2 class="card__title">Карачаевск</h2>
                     <button class="card__like" type="button"></button>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&#64; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_profile">
         <div class="popup__container">
-            <button class="popup__close-button" aria-label="Закрыть" type="button"></button>
+            <button class="popup__close-button popup__close-button_type_profile" aria-label="Закрыть" type="button"></button>
             <p class="popup__title">Редактировать профиль</p>
             <form action="#" name="popup" class="popup__fields">
                 <input type="text" value="" class="popup__field popup__field_type_name">
@@ -82,17 +82,26 @@
             </form>
         </div>
     </div>
-    <div class="popup popup-add">
+    <div class="popup popup_type_add">
         <div class="popup__container">
-            <button class="popup__close-button" aria-label="Закрыть" type="button"></button>
+            <button class="popup__close-button popup__close-button_type_add" aria-label="Закрыть" type="button"></button>
             <p class="popup__title">Новое место</p>
-            <form action="#" name="popup" class="popup__fields">
-                <input type="text" value="" class="popup__field popup__field_type_name" placeholder="Название">
-                <input type="text" value="" class="popup__field popup__field_type_job" placeholder="Ссылка на картинку">
-                <button type="submit" class="popup__submit-button">Сохранить</button>
+            <form action="#" name="popup-add" class="popup__fields">
+                <input type="text" value="" class="popup__field" placeholder="Название">
+                <input type="text" value="" class="popup__field" placeholder="Ссылка на картинку">
+                <button type="submit" class="popup__submit-button">Создать</button>
             </form>
         </div>
     </div>
+    <template class="card-template">
+        <div class="card">
+            <img src="./images/dombay.jpeg" alt="Ущелье Домбай" class="card__image">
+            <div class="card__header">
+                <h2 class="card__title">Домбай</h2>
+                <button class="card__like" type="button"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
