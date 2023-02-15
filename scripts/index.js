@@ -12,7 +12,9 @@ const titleCardInput = formElement.querySelector('.popup__field_type_title-card'
 const linkInput = formElement.querySelector('.popup__field_type_link');
 const popupAdd = document.querySelector('.popup_type_add');
 const addNewPlaceBtn = document.querySelector('.profile__button');
+
 const cardContainer = document.querySelector('.cards'); //находим контейнер с карточками
+
 const initialCards = [
     {
     name: 'Архыз',
@@ -39,6 +41,9 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+// const cardTemplate = document.querySelector('.card-template').content; //  получаем содержимое карточки
+// const cardElement = cardTemplate.querySelector('.card').cloneNode(true); // клонируем карточку
 // ---------------------------------------------------------------------------
 // Открытие и закрытие попапов
 // ---------------------------------------------------------------------------
@@ -60,42 +65,53 @@ function closePopup () {
 // ---------------------------------------------------------------------------
 // Появление карточек из массива данных
 // ---------------------------------------------------------------------------
-function сardAppend () {    
-    initialCards.forEach(function (objectKey) { 
+function AddCard () {    
+    initialCards.forEach(function (element) { 
         const cardTemplate = document.querySelector('.card-template').content; //  получаем содержимое карточки
         const cardElement = cardTemplate.querySelector('.card').cloneNode(true); // клонируем карточку
         
-        cardElement.querySelector('.card__title').textContent = objectKey.name; // присваиваем значение ключей объекта в массиве
-        cardElement.querySelector('.card__image').src = objectKey.link;
+        cardElement.querySelector('.card__title').textContent = element.name; // присваиваем значение ключей объекта в массиве
+        cardElement .querySelector('.card__image').src = element.link;
 
-        cardElement.querySelector('.card__like').addEventListener('click', function (evt) { // лайк для каждой карточки
+        cardElement
+            .querySelector('.card__like')
+            .addEventListener('click', function (evt) { // лайк для каждой карточки
             evt.target.classList.toggle('card__like_active');
         });
-        // --------------------------------------------------------------------
-        // Открытие и закрытие картинки по клику
-        // --------------------------------------------------------------------
-        const imageCardBtn = cardElement.querySelector('.card__image');
-        const closeImageBtn = document.querySelector('.popup__close-button_type_image');
-        const popupImage = document.querySelector('.popup_type_image');
 
-        document.querySelector('.popup__image').src = objectKey.link;
-        document.querySelector('.popup__figcaption').textContent = objectKey.name;
+        // --------------------------------------------------------------------
+        // Открытие и закрытие картинки по клику (popup #3)
+        // --------------------------------------------------------------------
+        const imageCardButton = cardElement.querySelector('.card__image');
+        const closeImageBtn = document.querySelector('.popup__close-button_type_image');
+        const popupWithImage = document.querySelector('.popup_type_image');
+        const popupPicture = document.querySelector('.popup__image')
+        const popupImageTitle = document.querySelector('.popup__figcaption');
+
+        imageCardButton                                     //верно!
+        .addEventListener('click', () => {                 //верно!
+            popupPicture.src = element.link;              //верно!
+            popupPicture.alt = element.name;             //верно!
+            popupImageTitle.textContent = element.name; //верно!
+
+            openPopupImage();
+        })
         
         function openPopupImage () {
-            popupImage.classList.toggle('popup_opened');
+            popupWithImage.classList.toggle('popup_opened');
         }
         
         function closePopupImage () {
-            popupImage.classList.remove('popup_opened');
+            popupWithImage.classList.remove('popup_opened');
         }
-        imageCardBtn.addEventListener('click', openPopupImage);
+
         closeImageBtn.addEventListener('click', closePopupImage);
-        // --------------------------------------------------------------------
+        // ********************************************************************
 
         cardContainer.append(cardElement) //пушим клонированную карточку в контейнер html
     });
 }
-сardAppend();
+AddCard();
 // ---------------------------------------------------------------------------
 // Изменение профиля через попап
 // ---------------------------------------------------------------------------
