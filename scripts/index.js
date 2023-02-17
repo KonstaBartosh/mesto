@@ -53,13 +53,19 @@ function renderCard ( {name, link}) {
     cardElement.querySelector('.card__image').alt = name;
     cardElement.querySelector('.card__image').src = link;
 
-    // лайк для каждой карточки из массива
+    // Удаление карточки
+    const deleteButton = cardElement.querySelector('.card__trash-icon');
+    deleteButton.addEventListener('click', () => {
+        cardElement.remove();
+    })
+
+    // Лайк для карточки
     const likeButton = cardElement.querySelector('.card__like');
     likeButton.addEventListener('click', () => {
         likeButton.classList.toggle('card__like_active');
     });
 
-    // Открытие - закрытие картинки по клику
+    // Увеличение - уменьшение картинки по клику
     const imageCardButton = cardElement.querySelector('.card__image');
     imageCardButton.addEventListener('click', () => {                 
         popupWithImage.classList.toggle('popup_opened');
@@ -103,7 +109,7 @@ function addNewCard () {
 
     newCardTitleInput.value = '';
     newCardLinkInput.value = '';
-    
+
     popupAddNewCard.classList.remove('popup_opened');
 }
 
