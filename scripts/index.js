@@ -24,18 +24,28 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+// Переменные профиля
 const popupTypeProfile = document.querySelector('.popup_type_profile');
 const editProfileButton = document.querySelector('.profile__edit-button');
-const closePopupProfileBtn = document.querySelector('.popup__close-button_type_profile');
-const closeNewPlacePopup = document.querySelector('.popup__close-button_type_add');
-const likeButton = document.querySelector('.card__like');
 const profileName = document.querySelector('.profile__info-title');
 const profileJob =document.querySelector('.profile__info-subtitle');
-const formElement = document.querySelector('.popup__container')  // находим форму в DOM
-const nameInput = formElement.querySelector('.popup__field_type_name'); //поля формы в DOM
-const jobInput = formElement.querySelector('.popup__field_type_job'); 
-const titleCardInput = formElement.querySelector('.popup__field_type_title-card');
-const linkInput = formElement.querySelector('.popup__field_type_link');
+const formElement = document.querySelector('.popup__container')  // находим поля формы в DOM
+const nameInput = formElement.querySelector('.popup__field_type_name'); //поле формы в DOM
+const jobInput = formElement.querySelector('.popup__field_type_job'); //поле формы в DOM
+const closePopupProfileBtn = document.querySelector('.popup__close-button_type_profile');
+
+// Переменные для добавления новой карточки
+const popupAddNewCard = document.querySelector('.popup_type_add');
+const addNewPlaceBtn = document.querySelector('.profile__button');
+const newCardForm = document.querySelector('.popup__fields_type_add');
+const newCardTitleInput = newCardForm.querySelector('.popup__field_type_title-card');
+const newCardLinkInput = newCardForm.querySelector('.popup__field_type_link');
+const closeNewPlacePopup = document.querySelector('.popup__close-button_type_add');
+
+// Лайки
+const likeButton = document.querySelector('.card__like');
+
+// Переменные для клика по карточке / картинки во весь экран
 const popupWithImage = document.querySelector('.popup_type_image');
 const closeImageBtn = document.querySelector('.popup__close-button_type_image');
 const popupPicture = document.querySelector('.popup__image')
@@ -45,7 +55,28 @@ const cardTemplate = document.querySelector('.card-template').content; //  по�
 const cardWrapper = document.querySelector('.cards'); //находим контейнер с карточками
 
 // ---------------------------------------------------------------------------
-// Появление карточек из массива данных
+// Изменение профиля через попап (popup)
+// ---------------------------------------------------------------------------
+editProfileButton.addEventListener('click', () => {
+    popupTypeProfile.classList.add('popup_opened');
+    nameInput.value = profileName.textContent; //поля формы со значением в профиле
+    jobInput.value = profileJob.textContent; //поля формы со значением в профиле
+});
+
+closePopupProfileBtn.addEventListener('click', () => {
+    popupTypeProfile.classList.remove('popup_opened');
+});
+
+function handleFormSubmit (evt) {
+    evt.preventDefault()
+
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    popupTypeProfile.classList.remove('popup_opened');
+}
+
+// ---------------------------------------------------------------------------
+// Работа с карточкой
 // ---------------------------------------------------------------------------  
 function renderCard ( {name, link}) { 
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true); // клонируем карточку
@@ -92,13 +123,6 @@ render();
 // ---------------------------------------------------------------------------
 // Добавление новой карточки пользователем (popup)
 // ---------------------------------------------------------------------------
-const popupAddNewCard = document.querySelector('.popup_type_add');
-const addNewPlaceBtn = document.querySelector('.profile__button');
-const newCardForm = document.querySelector('.popup__fields_type_add');
-const newCardTitleInput = newCardForm.querySelector('.popup__field_type_title-card');
-const newCardLinkInput = newCardForm.querySelector('.popup__field_type_link');
-
-
 function addNewCard () {
     const cardNewElement = renderCard({
         name: newCardTitleInput.value, 
@@ -120,26 +144,7 @@ addNewPlaceBtn.addEventListener('click', () => {
 closeNewPlacePopup .addEventListener('click', () => {
     popupAddNewCard.classList.remove('popup_opened');
 });
-// ---------------------------------------------------------------------------
-// Изменение профиля через попап
-// ---------------------------------------------------------------------------
-editProfileButton.addEventListener('click', () => {
-    popupTypeProfile.classList.add('popup_opened');
-    nameInput.value = profileName.textContent; //поля формы со значением в профиле
-    jobInput.value = profileJob.textContent; //поля формы со значением в профиле
-});
 
-closePopupProfileBtn.addEventListener('click', () => {
-    popupTypeProfile.classList.remove('popup_opened');
-});
-
-function handleFormSubmit (evt) {
-    evt.preventDefault()
-
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    popupTypeProfile.classList.remove('popup_opened');
-}
 // ---------------------------------------------------------------------------
 // Слушатели
 // ---------------------------------------------------------------------------
