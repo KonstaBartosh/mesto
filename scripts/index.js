@@ -1,54 +1,25 @@
-const initialCards = [
-    {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-const popup = document.querySelector('.popup');
 // Переменные профиля
+const popup = document.querySelector('.popup');
 const popupTypeProfile = document.querySelector('.popup_type_profile');
-const editProfileButton = document.querySelector('.profile__edit-button');
+const buttonEditProfile = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__info-title');
 const profileJob =document.querySelector('.profile__info-subtitle');
 const formElement = document.querySelector('.popup__container')  // находим поля формы в DOM
 const nameInput = formElement.querySelector('.popup__field_type_name'); //поле формы в DOM
 const jobInput = formElement.querySelector('.popup__field_type_job'); //поле формы в DOM
-const closePopupProfileBtn = document.querySelector('.popup__close-button_type_profile');
+const buttonCloseProfileForm = document.querySelector('.popup__close-button_type_profile');
 
 // Переменные для добавления новой карточки
 const popupAddNewCard = document.querySelector('.popup_type_add');
-const addNewPlaceBtn = document.querySelector('.profile__button');
+const buttonAddNewPlace = document.querySelector('.profile__button');
 const newCardForm = document.querySelector('.popup__fields_type_add');
 const newCardTitleInput = newCardForm.querySelector('.popup__field_type_title-card');
 const newCardLinkInput = newCardForm.querySelector('.popup__field_type_link');
-const closeNewPlacePopup = document.querySelector('.popup__close-button_type_add');
-
-// Лайки
-const likeButton = document.querySelector('.card__like');
+const buttonCloseNewPlace = document.querySelector('.popup__close-button_type_add');
 
 // Переменные для клика по карточке / картинки во весь экран
 const popupWithImage = document.querySelector('.popup_type_image');
-const closeImageBtn = document.querySelector('.popup__close-button_type_image');
+const buttonCloseImage = document.querySelector('.popup__close-button_type_image');
 const popupPicture = document.querySelector('.popup__image')
 const popupImageTitle = document.querySelector('.popup__figcaption');
 
@@ -69,13 +40,13 @@ function closePopup (popup) {
 // ---------------------------------------------------------------------------
 // Изменение профиля через попап (popup)
 // ---------------------------------------------------------------------------
-editProfileButton.addEventListener('click', () => {
+buttonEditProfile.addEventListener('click', () => {
     openPopup(popupTypeProfile);
     nameInput.value = profileName.textContent; //поля формы со значением в профиле
     jobInput.value = profileJob.textContent; //поля формы со значением в профиле
 });
 
-closePopupProfileBtn.addEventListener('click', () => {
+buttonCloseProfileForm.addEventListener('click', () => {
     closePopup(popupTypeProfile);
 });
 
@@ -103,9 +74,9 @@ function renderCard ( {name, link}) {
     })
 
     // Лайк для карточки
-    const likeButton = cardElement.querySelector('.card__like');
-    likeButton.addEventListener('click', () => {
-        likeButton.classList.toggle('card__like_active');
+    const buttonLike = cardElement.querySelector('.card__like');
+    buttonLike.addEventListener('click', () => {
+        buttonLike.classList.toggle('card__like_active');
     });
 
     // Увеличение - уменьшение картинки по клику
@@ -118,7 +89,7 @@ function renderCard ( {name, link}) {
         popupImageTitle.textContent = name;
     });
     
-    closeImageBtn.addEventListener('click', () => {
+    buttonCloseImage.addEventListener('click', () => {
         closePopup(popupWithImage);
     });
 
@@ -150,11 +121,11 @@ function addNewCard () {
     closePopup(popupAddNewCard);
 }
 
-addNewPlaceBtn.addEventListener('click', () => {
+buttonAddNewPlace.addEventListener('click', () => {
     openPopup(popupAddNewCard);
 });
 
-closeNewPlacePopup.addEventListener('click', () => {
+buttonCloseNewPlace.addEventListener('click', () => {
     closePopup(popupAddNewCard);
 });
 
