@@ -24,6 +24,7 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+const popup = document.querySelector('.popup');
 // Переменные профиля
 const popupTypeProfile = document.querySelector('.popup_type_profile');
 const editProfileButton = document.querySelector('.profile__edit-button');
@@ -55,16 +56,27 @@ const cardTemplate = document.querySelector('.card-template').content; //  по�
 const cardWrapper = document.querySelector('.cards'); //находим контейнер с карточками
 
 // ---------------------------------------------------------------------------
+// Открытие и закрытие попапа
+// ---------------------------------------------------------------------------
+function openPopup (popup) {
+    popup.classList.add('popup_opened');
+}
+
+function closePopup (popup) {
+    popup.classList.remove('popup_opened');
+}
+
+// ---------------------------------------------------------------------------
 // Изменение профиля через попап (popup)
 // ---------------------------------------------------------------------------
 editProfileButton.addEventListener('click', () => {
-    popupTypeProfile.classList.add('popup_opened');
+    openPopup(popupTypeProfile);
     nameInput.value = profileName.textContent; //поля формы со значением в профиле
     jobInput.value = profileJob.textContent; //поля формы со значением в профиле
 });
 
 closePopupProfileBtn.addEventListener('click', () => {
-    popupTypeProfile.classList.remove('popup_opened');
+    closePopup(popupTypeProfile);
 });
 
 function handleFormSubmit (evt) {
@@ -72,7 +84,7 @@ function handleFormSubmit (evt) {
 
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    popupTypeProfile.classList.remove('popup_opened');
+    closePopup(popupTypeProfile);
 }
 
 // ---------------------------------------------------------------------------
@@ -98,16 +110,18 @@ function renderCard ( {name, link}) {
 
     // Увеличение - уменьшение картинки по клику
     const imageCardButton = cardElement.querySelector('.card__image');
-    imageCardButton.addEventListener('click', () => {                 
-        popupWithImage.classList.toggle('popup_opened');
+    
+    imageCardButton.addEventListener('click', () => {  
+        openPopup(popupWithImage);
         popupPicture.src = link;              
         popupPicture.alt = name;             
         popupImageTitle.textContent = name;
     });
     
     closeImageBtn.addEventListener('click', () => {
-        popupWithImage.classList.remove('popup_opened');
+        closePopup(popupWithImage);
     });
+
     return cardElement;
 }
 
@@ -120,6 +134,7 @@ function render () {
     });
 }
 render();
+
 // ---------------------------------------------------------------------------
 // Добавление новой карточки пользователем (popup)
 // ---------------------------------------------------------------------------
@@ -128,21 +143,19 @@ function addNewCard () {
         name: newCardTitleInput.value, 
         link: newCardLinkInput.value
     });
-    
     cardWrapper.prepend(cardNewElement);
 
     newCardTitleInput.value = '';
     newCardLinkInput.value = '';
-
-    popupAddNewCard.classList.remove('popup_opened');
+    closePopup(popupAddNewCard);
 }
 
 addNewPlaceBtn.addEventListener('click', () => {
-    popupAddNewCard.classList.add('popup_opened');
+    openPopup(popupAddNewCard);
 });
 
-closeNewPlacePopup .addEventListener('click', () => {
-    popupAddNewCard.classList.remove('popup_opened');
+closeNewPlacePopup.addEventListener('click', () => {
+    closePopup(popupAddNewCard);
 });
 
 // ---------------------------------------------------------------------------
