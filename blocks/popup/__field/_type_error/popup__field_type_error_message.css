@@ -1,0 +1,6 @@
+.popup__field_type_error_message {
+    font-size: 12px;
+    line-height: 15px;
+    color: red;
+    display: none;
+}
