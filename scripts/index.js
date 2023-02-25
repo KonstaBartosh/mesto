@@ -28,9 +28,11 @@ const formAdd = document.forms.form__add;
 const inputAddTitle = formAdd.elements.add__title;
 const inputAddLink = formAdd.elements.add__link;
 
-/////////////////////////////////////////////////////
+// ---------------------------------------------------------------------------
+// Валидация форм
+// ---------------------------------------------------------------------------
 
-// Функция, которая добавляет класс с ошибкой
+// Функция, которая добавляет классы с ошибкой
 function showInputError (formElement, inputElement, errorMessage) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`); // Находим элемент ошибки внутри самой функции
     console.log(errorElement);
@@ -39,7 +41,7 @@ function showInputError (formElement, inputElement, errorMessage) {
     errorElement.textContent = errorMessage;
 }
 
-// Функция, которая удаляет класс с ошибкой
+// Функция, которая удаляет классы с ошибкой
 function hideInputError (formElement, inputElement) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     console.log(errorElement);
@@ -73,9 +75,6 @@ function enableValidation () {
     });
 }
 enableValidation();
-
-// inputElement.addEventListener('input', checkInputValidity);
-
 
 // ---------------------------------------------------------------------------
 // Открытие и закрытие попапа

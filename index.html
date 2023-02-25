@@ -34,7 +34,7 @@
         <div class="popup__container">
             <button class="popup__close-button popup__close-button_type_profile" aria-label="Закрыть" type="button"></button>
             <p class="popup__title">Редактировать профиль</p>
-            <form action="#" name="form__profile" class="form popup__fields" novalidate>
+            <form action="#" name="form__profile" class="form" novalidate>
                 <input  name="profile__name" 
                         id="name-input"
                         class="popup__field form__input"
@@ -59,9 +59,24 @@
         <div class="popup__container popup__container_type_add">
             <button class="popup__close-button popup__close-button_type_add" aria-label="Закрыть" type="button"></button>
             <p class="popup__title">Новое место</p>
-            <form action="#" name="form__add" class="popup__fields">
-                <input name="add__title" type="text" value="" class="popup__field" placeholder="Название" required>
-                <input name="add__link" type="url" value="" class="popup__field" placeholder="Ссылка на картинку" required>
+            <form action="#" name="form__add" class="form" novalidate>
+                <input  name="add__title"
+                        id="title-input"
+                        type="text" 
+                        value="" 
+                        class="popup__field form__input" 
+                        placeholder="Название"
+                        minlength="2" maxlength="30" 
+                        required>
+                <span class="title-input-error popup__field_type_error_message"></span>
+                <input  name="add__link"
+                        id="link-input"
+                        type="url" 
+                        value="" 
+                        class="popup__field form__input" 
+                        placeholder="Ссылка на картинку"
+                        required>
+                <span class="link-input-error popup__field_type_error_message"></span>
                 <button type="submit" class="popup__submit-button popup__submit-button_type_card">Создать</button>
             </form>
         </div>
