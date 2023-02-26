@@ -58,8 +58,7 @@ function hasInvalidInput(inputList) {
     })
 }
 
-// Функция принимает массив полей ввода
-// и элемент кнопки, состояние которой нужно менять
+// Функция принимает массив полей ввода и элемент кнопки
 function toggleButtonState (inputList, buttonElement) {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add('popup__submit-button_disabled');

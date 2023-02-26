@@ -1,5 +1,4 @@
 // Переменные профиля
-const overlay = document.querySelector('.popup_opened')
 const popup = document.querySelector('.popup');
 const popupTypeProfile = document.querySelector('.popup_type_profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
@@ -32,24 +31,29 @@ const inputAddLink = formAdd.elements.add__link;
 // ---------------------------------------------------------------------------
 // Открытие и закрытие попапа
 // ---------------------------------------------------------------------------
-function openPopup (popup) {
+function openPopup(popup) {
     popup.classList.add('popup_opened');
-    // Закрытие кликом по оверлею
-    popup.addEventListener('click', (evt) => {
-        if (!evt.target.closest('.overlay')) {
-            closePopup(popup);
-        }
-    });
-    // Закрытие по нажатию Esc
-    document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') { 
-            closePopup(popup);
-        }
-    });
+    document.addEventListener('keydown', handleKeyClose);
+    popup.addEventListener('click', handleOverlayClose);
 }
 
-function closePopup (popup) {
+function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handleKeyClose);
+}
+
+function handleKeyClose(evt) { // Закрытие по нажатию Esc
+    if (evt.key === 'Escape') {
+        const container = document.querySelector('.popup_opened');
+        closePopup(container);
+    }
+}
+
+function handleOverlayClose(evt) { // Закрытие кликом по оверлею
+    if (!evt.target.closest('.popup__container')) {
+        const container = document.querySelector('.popup_opened');
+        closePopup(container);
+    }
 }
 
 // ---------------------------------------------------------------------------
