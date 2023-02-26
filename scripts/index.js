@@ -1,4 +1,5 @@
 // Переменные профиля
+const overlay = document.querySelector('.popup_opened')
 const popup = document.querySelector('.popup');
 const popupTypeProfile = document.querySelector('.popup_type_profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
@@ -29,63 +30,20 @@ const inputAddTitle = formAdd.elements.add__title;
 const inputAddLink = formAdd.elements.add__link;
 
 // ---------------------------------------------------------------------------
-// Валидация форм
-// ---------------------------------------------------------------------------
-
-// Функция, которая добавляет классы с ошибкой
-function showInputError (formElement, inputElement, errorMessage) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`); // Находим элемент ошибки внутри самой функции
-    console.log(errorElement);
-    inputElement.classList.add('popup__field_type_error');
-    errorElement.classList.add('popup__field_type_error_message_active');
-    errorElement.textContent = errorMessage;
-}
-
-// Функция, которая удаляет классы с ошибкой
-function hideInputError (formElement, inputElement) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    console.log(errorElement);
-    inputElement.classList.remove('popup__field_type_error');
-    errorElement.classList.remove('popup__field_type_error_message_active');
-    errorElement.textContent = '';
-}
-
-// Функция, которая проверяет валидность поля
-function checkInputValidity (formElement, inputElement) {
-    if (inputElement.validity.valid === true) {
-        hideInputError(formElement, inputElement);
-    } else {
-        showInputError(formElement, inputElement, inputElement.validationMessage);
-    }
-}
-
-function setEventListeners (formElement) {
-    const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-    inputList.forEach((inputElement) => {  // Обойдём все элементы полученной коллекции
-        inputElement.addEventListener('input', () => { // каждому полю добавим обработчик события input
-            checkInputValidity(formElement, inputElement)
-        });
-    });
-}; 
-
-function enableValidation () {
-    const formList = Array.from(document.querySelectorAll('.form'));
-    formList.forEach((formElement) => {
-        setEventListeners(formElement);
-    });
-}
-enableValidation();
-
-// ---------------------------------------------------------------------------
 // Открытие и закрытие попапа
 // ---------------------------------------------------------------------------
 function openPopup (popup) {
     popup.classList.add('popup_opened');
 }
 
+
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
 }
+
+// popupTypeProfile.addEventListener('click', () => closePopup(popupTypeProfile));
+// popupAddNewCard.addEventListener('click', () => closePopup(popupAddNewCard));
+// popupWithImage.addEventListener('click', () => closePopup(popupWithImage));
 
 // ---------------------------------------------------------------------------
 // Изменение профиля через попап (popup)
