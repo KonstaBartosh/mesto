@@ -5,7 +5,7 @@ const popupTypeProfile = document.querySelector('.popup_type_profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__info-title');
 const profileJob =document.querySelector('.profile__info-subtitle');
-const popupContainer = document.querySelector('.popup__container')  // находим поля формы в DOM
+const popupContainer = document.querySelector('.popup__container');
 const buttonCloseProfileForm = document.querySelector('.popup__close-button_type_profile');
 
 // Переменные для добавления новой карточки
@@ -21,7 +21,7 @@ const popupImageTitle = document.querySelector('.popup__figcaption');
 const cardTemplate = document.querySelector('.card-template').content; //  получаем содержимое карточки
 const cardWrapper = document.querySelector('.cards'); //находим контейнер с карточками
 
-//forms
+//Переменные для всех форм
 const formProfile = document.forms.form__profile; // получение формы
 const inputProfileName = formProfile.elements.profile__name; // получение элемента формы
 const inputProfileOccupation = formProfile.elements.profile__occupation;
@@ -34,14 +34,19 @@ const inputAddLink = formAdd.elements.add__link;
 // ---------------------------------------------------------------------------
 function openPopup (popup) {
     popup.classList.add('popup_opened');
-    // Закрытие кликом по overlay
+    // Закрытие кликом по оверлею
     popup.addEventListener('click', (evt) => {
         if (!evt.target.closest('.overlay')) {
             closePopup(popup);
         }
-    })
+    });
+    // Закрытие по нажатию Esc
+    document.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Escape') { 
+            closePopup(popup);
+        }
+    });
 }
-
 
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
