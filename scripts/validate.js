@@ -5,16 +5,16 @@
 // Функция, которая добавляет классы с ошибкой
 function showInputError (formElement, inputElement, errorMessage) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`); // Находим элемент ошибки внутри самой функции
-    inputElement.classList.add('popup__field_type_error');
-    errorElement.classList.add('popup__field_type_error_message_active');
+    inputElement.classList.add('form__error-sign');
+    errorElement.classList.add('form__error-message_active');
     errorElement.textContent = errorMessage;
 }
 
 // Функция, которая удаляет классы с ошибкой
 function hideInputError (formElement, inputElement) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove('popup__field_type_error');
-    errorElement.classList.remove('popup__field_type_error_message_active');
+    inputElement.classList.remove('form__error-sign');
+    errorElement.classList.remove('form__error-message_active');
     errorElement.textContent = '';
 }
 
