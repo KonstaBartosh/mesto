@@ -34,16 +34,18 @@ const inputAddLink = formAdd.elements.add__link;
 // ---------------------------------------------------------------------------
 function openPopup (popup) {
     popup.classList.add('popup_opened');
+    // Закрытие кликом по overlay
+    popup.addEventListener('click', (evt) => {
+        if (!evt.target.closest('.overlay')) {
+            closePopup(popup);
+        }
+    })
 }
 
 
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
 }
-
-// popupTypeProfile.addEventListener('click', () => closePopup(popupTypeProfile));
-// popupAddNewCard.addEventListener('click', () => closePopup(popupAddNewCard));
-// popupWithImage.addEventListener('click', () => closePopup(popupWithImage));
 
 // ---------------------------------------------------------------------------
 // Изменение профиля через попап (popup)
