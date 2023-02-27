@@ -134,19 +134,11 @@ render();
 function addNewCard (evt) {    
     evt.preventDefault;
     const cardNewElement = renderCard({name: inputAddTitle.value, link: inputAddLink.value});
+    submitCardButton.setAttribute('disabled', true);
+    submitCardButton.classList.add('popup__submit-button_disabled');
     cardWrapper.prepend(cardNewElement);
     formAdd.reset();
     closePopup(popupAddNewCard);
-
-    if (inputAddTitle.value === '' || inputAddLink.value === '') {
-        console.log('zhui');
-        submitCardButton.setAttribute('disabled', true);
-        submitCardButton.classList.add('popup__submit-button_disabled');
-    } else {
-        console.log('hui');
-        submitCardButton.removeAttribute('disabled', true);
-        submitCardButton.classList.remove('popup__submit-button_disabled');
-    }
 }
 
 buttonAddNewPlace.addEventListener('click', () => {
