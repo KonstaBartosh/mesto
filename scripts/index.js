@@ -5,7 +5,7 @@ const popupTypeProfile = document.querySelector('.popup_type_profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__info-title');
 const profileJob =document.querySelector('.profile__info-subtitle');
-const popupContainer = document.querySelector('.popup__container')  // находим поля формы в DOM
+const popupContainer = document.querySelector('.popup__container');  // находим поля формы в DOM
 
 // Переменные для добавления новой карточки
 const popupAddNewCard = document.querySelector('.popup_type_add');
@@ -59,12 +59,16 @@ function closePopupByEscape(evt) {
 }
 
 // Функция-обработчик кнопки закрытия
-function сloseButtonHandler(popup) {
-    const closeButton = popup.querySelector('.popup__close-button');
-    closeButton.addEventListener('click', () => {
-        closePopup(popup)
+function closeButtonHandler() {
+    const closeButtons = document.querySelectorAll('.popup__close-button');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+        const popup = button.closest('.popup');
+        popup.classList.remove('popup_opened');
+        });
     });
 }
+closeButtonHandler();
 
 // ---------------------------------------------------------------------------
 // Изменение профиля через попап (popup)
@@ -74,8 +78,6 @@ buttonEditProfile.addEventListener('click', () => {
     inputProfileName.value = profileName.textContent; //поля формы со значением в профиле
     inputProfileOccupation.value = profileJob.textContent; //поля формы со значением в профиле
 });
-
-сloseButtonHandler(popupTypeProfile);
 
 function handleFormSubmit (evt) {
     evt.preventDefault()
@@ -113,8 +115,6 @@ function renderCard ({name, link}) {
         popupPicture.alt = name;             
         popupImageTitle.textContent = name;
     });
-    
-    сloseButtonHandler(popupWithImage);
 
     return cardElement;
 }
@@ -144,8 +144,6 @@ function addNewCard (evt) {
 buttonAddNewPlace.addEventListener('click', () => {
     openPopup(popupAddNewCard);
 });
-
-сloseButtonHandler(popupAddNewCard);
 
 // ---------------------------------------------------------------------------
 // Слушатели
