@@ -6,6 +6,7 @@ const buttonEditProfile = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__info-title');
 const profileJob =document.querySelector('.profile__info-subtitle');
 const popupContainer = document.querySelector('.popup__container');  // находим поля формы в DOM
+const closeButton = document.querySelector('.popup__close-button');
 
 // Переменные для добавления новой карточки
 const popupAddNewCard = document.querySelector('.popup_type_add');
@@ -61,9 +62,9 @@ function closePopupByEscape(evt) {
 // Функция-обработчик кнопки закрытия
 function closeButtonHandler() {
     const closeButtons = document.querySelectorAll('.popup__close-button');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-        const popup = button.closest('.popup');
+    closeButtons.forEach(closeButton => {
+        closeButton.addEventListener('click', () => {
+        const popup = closeButton.closest('.popup');
         popup.classList.remove('popup_opened');
         });
     });
