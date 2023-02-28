@@ -96,13 +96,13 @@ function renderCard ({name, link}) {
     // Удаление карточки
     const deleteButton = cardElement.querySelector('.card__trash-icon');
     deleteButton.addEventListener('click', () => {
-        cardElement.remove();
+    cardElement.remove();
     });
 
     // Лайк для карточки
     const buttonLike = cardElement.querySelector('.card__like'); 
     buttonLike.addEventListener('click', () => {
-        buttonLike.classList.toggle('card__like_active');
+    buttonLike.classList.toggle('card__like_active');
     });
 
     // Увеличение - уменьшение картинки по клику
