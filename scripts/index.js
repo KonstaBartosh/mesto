@@ -63,9 +63,9 @@ function closePopupByEscape(evt) {
 function closeButtonHandler() {
     const closeButtons = document.querySelectorAll('.popup__close-button');
     closeButtons.forEach(closeButton => {
-        closeButton.addEventListener('click', () => {
+        closeButton.addEventListener('click', (event) => {
         const popup = closeButton.closest('.popup');
-        popup.classList.remove('popup_opened');
+        closePopup(popup);
         });
     });
 }
